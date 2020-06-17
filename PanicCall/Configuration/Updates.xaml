@@ -1,0 +1,16 @@
+﻿<Window x:Class="PanicCall.Updates"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Updates" Height="300" Width="300" WindowStyle="None" Background="{x:Null}" MouseLeftButtonDown="Window_MouseLeftButtonDown" AllowsTransparency="True">
+    <Grid>
+        <Rectangle RadiusX="10" RadiusY="10" Stroke="Gray" StrokeThickness="3" Fill="#FFEBEBEB" />
+        <ScrollViewer x:Name="testlist" HorizontalAlignment="Left" Height="241" Margin="10,41,0,0" VerticalAlignment="Top" Width="272" >
+            <TextBlock MouseLeftButtonDown="TextBlock_MouseLeftButtonDown">
+                 - 시흥 은계 구역별 PIS 표시 기능 추가 <LineBreak/>
+            </TextBlock>
+        </ScrollViewer>
+
+        <TextBlock Text="Version.200443 Updates " Margin="10,13,0,0"  VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#FF012F85" HorizontalAlignment="Left" Height="28" Width="272" />
+
+    </Grid>
+</Window>

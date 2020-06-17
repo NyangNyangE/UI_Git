@@ -1,0 +1,497 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\OpenCvSharp3-AnyCPU.4.0.0.20181129\build\OpenCvSharp3-AnyCPU.props" Condition="Exists('..\packages\OpenCvSharp3-AnyCPU.4.0.0.20181129\build\OpenCvSharp3-AnyCPU.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9783AF7E-2A4D-4905-A695-08A3BAF2075D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PanicCall</RootNamespace>
+    <AssemblyName>PanicCall</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ExpressionBlendVersion>4.0.20621.0</ExpressionBlendVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ApplicationIcon>Images\Twowins.ico</ApplicationIcon>
+    <SignManifests>false</SignManifests>
+    <ManifestCertificateThumbprint>3FEA823C76EA8D596B2982EF20704AFA91DCFE36</ManifestCertificateThumbprint>
+    <ManifestKeyFile>PanicCall_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>false</GenerateManifests>
+    <TargetZone>LocalIntranet</TargetZone>
+    <SignAssembly>false</SignAssembly>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <Utf8Output>true</Utf8Output>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>0ee68594</NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <PublisherName>Towinscom</PublisherName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\PanicCall.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\PanicCall.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\PanicCall.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\PanicCall.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Block.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Block.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonCtl\btDataBaseControl.xaml.cs">
+      <DependentUpon>btDataBaseControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonCtl\btExportControl.xaml.cs">
+      <DependentUpon>btExportControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonCtl\btLoadControl.xaml.cs">
+      <DependentUpon>btLoadControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonCtl\btResidentControl.xaml.cs">
+      <DependentUpon>btResidentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonCtl\btSaveControl.xaml.cs">
+      <DependentUpon>btSaveControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonCtl\btMinimizedControl.xaml.cs">
+      <DependentUpon>btMinimizedControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonCtl\btStartControl.xaml.cs">
+      <DependentUpon>btStartControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Camera.cs" />
+    <Compile Include="Configuration\Admin.xaml.cs">
+      <DependentUpon>Admin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration\Connect.xaml.cs">
+      <DependentUpon>Connect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration\SecretOption.xaml.cs">
+      <DependentUpon>SecretOption.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContextMenu\InputPassword.xaml.cs">
+      <DependentUpon>InputPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContextMenu\InputPisIP.xaml.cs">
+      <DependentUpon>InputPisIP.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\AddIcon.xaml.cs">
+      <DependentUpon>AddIcon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\AddMapCtl.xaml.cs">
+      <DependentUpon>AddMapCtl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonCtl\btCameraAddControl.xaml.cs">
+      <DependentUpon>btCameraAddControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonCtl\btAdminControl.xaml.cs">
+      <DependentUpon>btAdminControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonCtl\btConnectControl.xaml.cs">
+      <DependentUpon>btConnectControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonCtl\btDVRControl.xaml.cs">
+      <DependentUpon>btDVRControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonCtl\btExitControl.xaml.cs">
+      <DependentUpon>btExitControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonCtl\btIconAddControl.xaml.cs">
+      <DependentUpon>btIconAddControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonCtl\btMapAddControl.xaml.cs">
+      <DependentUpon>btMapAddControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\Copyright.xaml.cs">
+      <DependentUpon>Copyright.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\PisControl.xaml.cs">
+      <DependentUpon>PisControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase.cs" />
+    <Compile Include="ContextMenu\InputPanicInfo.xaml.cs">
+      <DependentUpon>InputPanicInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dvr.cs" />
+    <Compile Include="EnumerationType\EnumerationType.cs" />
+    <Compile Include="Group.cs" />
+    <Compile Include="LoadingAnimation.xaml.cs" />
+    <Compile Include="LprSetting.xaml.cs">
+      <DependentUpon>LprSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\KeyboardManager.cs" />
+    <Compile Include="Management\ProcessorManager.cs" />
+    <Compile Include="Management\RegistryManager.cs" />
+    <Compile Include="Map.cs" />
+    <Compile Include="ContextMenu\MapInfo.xaml.cs">
+      <DependentUpon>MapInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Maps.cs" />
+    <Compile Include="Marshaling\Marshaling.cs" />
+    <Compile Include="NamedPipeServer.cs" />
+    <Compile Include="NumberTextBox.cs" />
+    <Compile Include="Control\PanicControl.xaml.cs">
+      <DependentUpon>PanicControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ReceiveEventArgs.cs" />
+    <Compile Include="Control\Twowins.xaml.cs">
+      <DependentUpon>Twowins.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SerialView.xaml.cs">
+      <DependentUpon>SerialView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestModule.cs" />
+    <Compile Include="User_Data_.cs" />
+    <Compile Include="ZoomBoxPanel.cs" />
+    <Compile Include="ZoomBoxSlider.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Images\app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <BlendEmbeddedFont Include="Fonts\albr55w.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\albr56w.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\albr65w.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\albr85w.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+      <Characters>
+      </Characters>
+      <Uppercase>True</Uppercase>
+      <Lowercase>True</Lowercase>
+      <Numbers>True</Numbers>
+      <Punctuation>True</Punctuation>
+    </BlendEmbeddedFont>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0%28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0%28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ContextMenu\DVRViewer\" />
+    <Folder Include="Images\Resorce\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.0\Microsoft.Expression.Blend.WPF.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\OpenCvSharp3-AnyCPU.4.0.0.20181129\build\OpenCvSharp3-AnyCPU.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenCvSharp3-AnyCPU.4.0.0.20181129\build\OpenCvSharp3-AnyCPU.props'))" />
+  </Target>
+  <ItemGroup>
+    <ReferencePath Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\bin\x86\Release\Google.Protobuf.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.5\Libraries\Microsoft.Expression.Interactions.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.5\Libraries\Microsoft.Expression.Prototyping.Interactivity.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\mscorlib.dll" />
+    <ReferencePath Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\bin\x86\Release\MySql.Data.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\PresentationCore.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\PresentationFramework.Classic.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\PresentationFramework.dll" />
+    <ReferencePath Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\SanoteLibrary.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\System.Core.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\System.Data.DataSetExtensions.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\System.Data.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\System.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\System.Drawing.dll" />
+    <ReferencePath Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\bin\x86\Release\System.Net.Json.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\System.Windows.Forms.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\System.Xaml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\System.Xml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\System.Xml.Linq.dll" />
+    <ReferencePath Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\bin\x86\Release\TWWPFUtilityLib.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\UIAutomationProvider.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\WindowsBase.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\WindowsFormsIntegration.dll" />
+    <ReferencePath Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\bin\x86\Release\WPFToolkit.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\Block.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ButtonCtl\btDataBaseControl.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ButtonCtl\btExportControl.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ButtonCtl\btLoadControl.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ButtonCtl\btResidentControl.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ButtonCtl\btSaveControl.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ButtonCtl\btMinimizedControl.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ButtonCtl\btStartControl.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\Configuration\Admin.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\Configuration\Connect.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\Configuration\SecretOption.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ContextMenu\InputPassword.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ContextMenu\InputPisIP.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\Control\AddIcon.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\Control\AddMapCtl.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ButtonCtl\btCameraAddControl.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ButtonCtl\btAdminControl.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ButtonCtl\btConnectControl.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ButtonCtl\btDVRControl.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ButtonCtl\btExitControl.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ButtonCtl\btIconAddControl.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ButtonCtl\btMapAddControl.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\Control\Copyright.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ContextMenu\InputPanicInfo.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\Control\PisControl.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\LoadingAnimation.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\LprSetting.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\MainWindow.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\Control\PanicControl.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\ContextMenu\MapInfo.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\SerialView.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\Control\Twowins.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\App.g.cs" />
+    <Compile Include="D:\상품기획팀\Dropbox\상품기획팀의 팀 폴더\개인폴더\장요셉\배포 및 설치\차량번호인식(지훈)\2팀\UI\PanicCall\obj\Release\GeneratedInternalTypeHelper.g.cs" />
+  </ItemGroup>
+</Project>

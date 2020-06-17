@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="PanicCall.AddGroup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignWidth="600" x:Name="UserControl" Loaded="UserControl_Loaded"  MouseMove="UserControl_MouseMove" MouseLeftButtonUp="UserControl_MouseLeftButtonUp">
+    <StackPanel Background="#FF232323" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
+        <Grid >
+            <TextBlock Foreground="White" FontSize="20" Margin="0,0,465,0">Group Select</TextBlock>
+            <Button Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="ClickedAddButton" HorizontalAlignment="Right" Margin="0,0,142,0" >추가</Button>
+            <Button Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="ClickedDelButton" HorizontalAlignment="Right" Margin="0,0,87,0">삭제</Button>
+            <Button Width="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="ClickedCloseButton" HorizontalAlignment="Right" Margin="0,0,0,0">닫기</Button>
+        </Grid>
+        <WrapPanel x:Name="Panel" Background="#FF2D2D30">
+        </WrapPanel>
+    </StackPanel>
+
+</UserControl>

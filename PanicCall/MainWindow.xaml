@@ -1,0 +1,396 @@
+﻿<Window x:Class="PanicCall.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:PanicCall"
+    xmlns:zb="clr-namespace:ZoomBoxLibrary"
+    xmlns:utils="clr-namespace:TWWPFUtilityLib;assembly=TWWPFUtilityLib"
+    Title="PanicManagementSystem" WindowStyle="None" ResizeMode="NoResize"  WindowState="Maximized" Loaded="Window_Loaded" Topmost="True" Icon="/PanicCall;component/Images/Twowins.ico" Closing="Window_Closing" Closed="Window_Closed" Width="1917.254" Height="1078.284">
+    <Window.Resources>
+        <local:ZoomModeListConverter x:Key="zoomModeListConverter"/>
+        <local:MouseModeListConverter x:Key="mouseModeListConverter"/>
+        <local:WheelModeListConverter x:Key="wheelModeListConverter"/>
+
+        <Style TargetType="Ellipse">
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+        </Style>
+        <Storyboard x:Key="EllipseStoryBoard">
+            <DoubleAnimation To="8" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"/>
+            <DoubleAnimation To="8" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"/>
+            <DoubleAnimation To="0" Storyboard.TargetProperty="(UIElement.Opacity)"/>
+        </Storyboard>
+        <SolidColorBrush x:Key="SliderThumb.Static.Foreground" Color="#FFE5E5E5"/>
+        <SolidColorBrush x:Key="SliderThumb.MouseOver.Background" Color="#FF7C33FD"/>
+        <SolidColorBrush x:Key="SliderThumb.MouseOver.Border" Color="#FF7C33FD"/>
+        <SolidColorBrush x:Key="SliderThumb.Pressed.Background" Color="#FF7C33FD"/>
+        <SolidColorBrush x:Key="SliderThumb.Pressed.Border" Color="#FF7C33FD"/>
+        <SolidColorBrush x:Key="SliderThumb.Disabled.Background" Color="#FFF0F0F0"/>
+        <SolidColorBrush x:Key="SliderThumb.Disabled.Border" Color="#FFD9D9D9"/>
+        <SolidColorBrush x:Key="SliderThumb.Static.Background" Color="#FFF0F0F0"/>
+        <SolidColorBrush x:Key="SliderThumb.Static.Border" Color="#FFACACAC"/>
+        <ControlTemplate x:Key="SliderThumbHorizontalTop" TargetType="{x:Type Thumb}">
+            <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+                <Path x:Name="grip" Data="M 0,6 C0,6 5.5,0 5.5,0 5.5,0 11,6 11,6 11,6 11,18 11,18 11,18 0,18 0,18 0,18 0,6 0,6 z" Fill="{StaticResource SliderThumb.Static.Background}" Stretch="Fill" SnapsToDevicePixels="True" Stroke="{StaticResource SliderThumb.Static.Border}" StrokeThickness="1" UseLayoutRounding="True" VerticalAlignment="Center"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.MouseOver.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.MouseOver.Border}"/>
+                </Trigger>
+                <Trigger Property="IsDragging" Value="true">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.Pressed.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.Pressed.Border}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.Disabled.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.Disabled.Border}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="SliderThumbHorizontalBottom" TargetType="{x:Type Thumb}">
+            <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+                <Path x:Name="grip" Data="M 0,12 C0,12 5.5,18 5.5,18 5.5,18 11,12 11,12 11,12 11,0 11,0 11,0 0,0 0,0 0,0 0,12 0,12 z" Fill="{StaticResource SliderThumb.Static.Background}" Stretch="Fill" SnapsToDevicePixels="True" Stroke="{StaticResource SliderThumb.Static.Border}" StrokeThickness="1" UseLayoutRounding="True" VerticalAlignment="Center"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.MouseOver.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.MouseOver.Border}"/>
+                </Trigger>
+                <Trigger Property="IsDragging" Value="true">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.Pressed.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.Pressed.Border}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.Disabled.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.Disabled.Border}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <SolidColorBrush x:Key="SliderThumb.Track.Border" Color="#FFD6D6D6"/>
+        <SolidColorBrush x:Key="SliderThumb.Track.Background" Color="#FFE7EAEA"/>
+        <Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Focusable" Value="false"/>
+            <Setter Property="IsTabStop" Value="false"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Rectangle Fill="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <ControlTemplate x:Key="SliderThumbHorizontalDefault" TargetType="{x:Type Thumb}">
+            <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+                <Path x:Name="grip" Data="M 0,0 C0,0 11,0 11,0 11,0 11,18 11,18 11,18 0,18 0,18 0,18 0,0 0,0 z" Fill="#FF7C33FD" Stretch="Fill" SnapsToDevicePixels="True" StrokeThickness="1" UseLayoutRounding="True" VerticalAlignment="Center"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.MouseOver.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.MouseOver.Border}"/>
+                </Trigger>
+                <Trigger Property="IsDragging" Value="true">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.Pressed.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.Pressed.Border}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.Disabled.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.Disabled.Border}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="SliderHorizontal" TargetType="{x:Type Slider}">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TickBar x:Name="TopTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,0,0,2" Placement="Top" Grid.Row="0" Visibility="Collapsed"/>
+                    <TickBar x:Name="BottomTick" Fill="{TemplateBinding Foreground}" Height="4" Margin="0,2,0,0" Placement="Bottom" Grid.Row="2" Visibility="Collapsed"/>
+                    <Border x:Name="TrackBackground" BorderBrush="{StaticResource SliderThumb.Track.Border}" BorderThickness="1" Background="{StaticResource SliderThumb.Track.Background}" Height="4.0" Margin="5,0" Grid.Row="1" VerticalAlignment="center">
+                        <Canvas Margin="-6,-1">
+                            <Rectangle x:Name="PART_SelectionRange" Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Height="4.0" Visibility="Hidden"/>
+                        </Canvas>
+                    </Border>
+                    <Track x:Name="PART_Track" Grid.Row="1">
+                        <Track.DecreaseRepeatButton>
+                            <RepeatButton Command="{x:Static Slider.DecreaseLarge}" Style="{StaticResource RepeatButtonTransparent}"/>
+                        </Track.DecreaseRepeatButton>
+                        <Track.IncreaseRepeatButton>
+                            <RepeatButton Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource RepeatButtonTransparent}"/>
+                        </Track.IncreaseRepeatButton>
+                        <Track.Thumb>
+                            <Thumb x:Name="Thumb" Focusable="False" Height="18" OverridesDefaultStyle="True" Template="{StaticResource SliderThumbHorizontalDefault}" VerticalAlignment="Center" Width="11"/>
+                        </Track.Thumb>
+                    </Track>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="TickPlacement" Value="TopLeft">
+                    <Setter Property="Visibility" TargetName="TopTick" Value="Visible"/>
+                    <Setter Property="Template" TargetName="Thumb" Value="{StaticResource SliderThumbHorizontalTop}"/>
+                    <Setter Property="Margin" TargetName="TrackBackground" Value="5,2,5,0"/>
+                </Trigger>
+                <Trigger Property="TickPlacement" Value="BottomRight">
+                    <Setter Property="Visibility" TargetName="BottomTick" Value="Visible"/>
+                    <Setter Property="Template" TargetName="Thumb" Value="{StaticResource SliderThumbHorizontalBottom}"/>
+                    <Setter Property="Margin" TargetName="TrackBackground" Value="5,0,5,2"/>
+                </Trigger>
+                <Trigger Property="TickPlacement" Value="Both">
+                    <Setter Property="Visibility" TargetName="TopTick" Value="Visible"/>
+                    <Setter Property="Visibility" TargetName="BottomTick" Value="Visible"/>
+                </Trigger>
+                <Trigger Property="IsSelectionRangeEnabled" Value="true">
+                    <Setter Property="Visibility" TargetName="PART_SelectionRange" Value="Visible"/>
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="true">
+                    <Setter Property="Foreground" TargetName="Thumb" Value="Blue"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="SliderThumbVerticalLeft" TargetType="{x:Type Thumb}">
+            <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+                <Path x:Name="grip" Data="M 6,11 C6,11 0,5.5 0,5.5 0,5.5 6,0 6,0 6,0 18,0 18,0 18,0 18,11 18,11 18,11 6,11 6,11 z" Fill="{StaticResource SliderThumb.Static.Background}" Stretch="Fill" Stroke="{StaticResource SliderThumb.Static.Border}"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.MouseOver.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.MouseOver.Border}"/>
+                </Trigger>
+                <Trigger Property="IsDragging" Value="true">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.Pressed.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.Pressed.Border}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.Disabled.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.Disabled.Border}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="SliderThumbVerticalRight" TargetType="{x:Type Thumb}">
+            <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+                <Path x:Name="grip" Data="M 12,11 C12,11 18,5.5 18,5.5 18,5.5 12,0 12,0 12,0 0,0 0,0 0,0 0,11 0,11 0,11 12,11 12,11 z" Fill="{StaticResource SliderThumb.Static.Background}" Stretch="Fill" Stroke="{StaticResource SliderThumb.Static.Border}"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.MouseOver.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.MouseOver.Border}"/>
+                </Trigger>
+                <Trigger Property="IsDragging" Value="true">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.Pressed.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.Pressed.Border}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.Disabled.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.Disabled.Border}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="SliderThumbVerticalDefault" TargetType="{x:Type Thumb}">
+            <Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
+                <Path x:Name="grip" Data="M0.5,0.5 L18.5,0.5 18.5,11.5 0.5,11.5z" Fill="{StaticResource SliderThumb.Static.Background}" Stretch="Fill" Stroke="{StaticResource SliderThumb.Static.Border}"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.MouseOver.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.MouseOver.Border}"/>
+                </Trigger>
+                <Trigger Property="IsDragging" Value="true">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.Pressed.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.Pressed.Border}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Fill" TargetName="grip" Value="{StaticResource SliderThumb.Disabled.Background}"/>
+                    <Setter Property="Stroke" TargetName="grip" Value="{StaticResource SliderThumb.Disabled.Border}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="SliderVertical" TargetType="{x:Type Slider}">
+            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition MinWidth="{TemplateBinding MinWidth}" Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TickBar x:Name="TopTick" Grid.Column="0" Fill="{TemplateBinding Foreground}" Margin="0,0,2,0" Placement="Left" Visibility="Collapsed" Width="4"/>
+                    <TickBar x:Name="BottomTick" Grid.Column="2" Fill="{TemplateBinding Foreground}" Margin="2,0,0,0" Placement="Right" Visibility="Collapsed" Width="4"/>
+                    <Border x:Name="TrackBackground" BorderBrush="{StaticResource SliderThumb.Track.Border}" BorderThickness="1" Background="{StaticResource SliderThumb.Track.Background}" Grid.Column="1" HorizontalAlignment="center" Margin="0,5" Width="4.0">
+                        <Canvas Margin="-1,-6">
+                            <Rectangle x:Name="PART_SelectionRange" Fill="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Visibility="Hidden" Width="4.0"/>
+                        </Canvas>
+                    </Border>
+                    <Track x:Name="PART_Track" Grid.Column="1">
+                        <Track.DecreaseRepeatButton>
+                            <RepeatButton Command="{x:Static Slider.DecreaseLarge}" Style="{StaticResource RepeatButtonTransparent}"/>
+                        </Track.DecreaseRepeatButton>
+                        <Track.IncreaseRepeatButton>
+                            <RepeatButton Command="{x:Static Slider.IncreaseLarge}" Style="{StaticResource RepeatButtonTransparent}"/>
+                        </Track.IncreaseRepeatButton>
+                        <Track.Thumb>
+                            <Thumb x:Name="Thumb" Focusable="False" Height="11" OverridesDefaultStyle="True" Template="{StaticResource SliderThumbVerticalDefault}" VerticalAlignment="Top" Width="18"/>
+                        </Track.Thumb>
+                    </Track>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="TickPlacement" Value="TopLeft">
+                    <Setter Property="Visibility" TargetName="TopTick" Value="Visible"/>
+                    <Setter Property="Template" TargetName="Thumb" Value="{StaticResource SliderThumbVerticalLeft}"/>
+                    <Setter Property="Margin" TargetName="TrackBackground" Value="2,5,0,5"/>
+                </Trigger>
+                <Trigger Property="TickPlacement" Value="BottomRight">
+                    <Setter Property="Visibility" TargetName="BottomTick" Value="Visible"/>
+                    <Setter Property="Template" TargetName="Thumb" Value="{StaticResource SliderThumbVerticalRight}"/>
+                    <Setter Property="Margin" TargetName="TrackBackground" Value="0,5,2,5"/>
+                </Trigger>
+                <Trigger Property="TickPlacement" Value="Both">
+                    <Setter Property="Visibility" TargetName="TopTick" Value="Visible"/>
+                    <Setter Property="Visibility" TargetName="BottomTick" Value="Visible"/>
+                </Trigger>
+                <Trigger Property="IsSelectionRangeEnabled" Value="true">
+                    <Setter Property="Visibility" TargetName="PART_SelectionRange" Value="Visible"/>
+                </Trigger>
+                <Trigger Property="IsKeyboardFocused" Value="true">
+                    <Setter Property="Foreground" TargetName="Thumb" Value="Blue"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style x:Key="SliderStyle1" TargetType="{x:Type Slider}">
+            <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource SliderThumb.Static.Foreground}"/>
+            <Setter Property="Template" Value="{StaticResource SliderHorizontal}"/>
+            <Style.Triggers>
+                <Trigger Property="Orientation" Value="Vertical">
+                    <Setter Property="Template" Value="{StaticResource SliderVertical}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+
+    <Canvas x:Name="Root" Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}">
+        <!--   <local:Progress x:Name="progress" Panel.ZIndex="99" Canvas.Left="200" Canvas.Top="184"   /> -->
+        <Grid x:Name="grid" Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}" Height="{DynamicResource {x:Static SystemParameters.PrimaryScreenHeightKey}}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="788*" />
+                <ColumnDefinition Width="1132*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid x:Name="mainfram" Width="Auto" Grid.ColumnSpan="2">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Rectangle Grid.Row="0" Height="20"  Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}" HorizontalAlignment="Stretch">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black" Offset="0"/>
+                            <GradientStop Color="#FF3D3D3D" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <TextBlock Width="Auto" Grid.Row="0" Foreground="White" HorizontalAlignment="Stretch" TextAlignment="Center" TextTrimming="None" ClipToBounds="True" FontSize="15" FontWeight="Bold" RenderTransformOrigin="0,0" VerticalAlignment="Center" TextDecorations="None" Text="지능형 번호판 인식" />
+
+                <Rectangle Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}" Grid.Row="1" Height="70" HorizontalAlignment="Stretch" StrokeThickness="0.0" Stroke="#FF4E4E50" Fill="#FF252526" />
+                <StackPanel Grid.Row="1" VerticalAlignment="Center" Height="Auto" Orientation="Horizontal">
+                    <local:btMapAddControl Margin="20,0,0,0" Width="40" Height="40" PreviewMouseLeftButtonDown="btMapAddControl_PreviewMouseLeftButtonDown"/>
+                    <local:btIconAddControl x:Name="btIconAdd" Margin="10,0,0,0" Height="40" Width="40" HorizontalAlignment="Right" PreviewMouseLeftButtonDown="btIconAdd_PreviewMouseLeftButtonDown"/>
+                    <local:btGroupControl x:Name="btGroupControl" Margin="10,0,0,0" Height="40" Width="40" HorizontalAlignment="Right" PreviewMouseLeftButtonDown="btGroupControl_PreviewMouseLeftButtonDown"/>
+                    <local:btStartControl x:Name="btStartControl" Margin="10,0,0,0" Height="40" Width="40" HorizontalAlignment="Right" PreviewMouseDown="btStartControl_PreviewMouseLeftButtonDown"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Height="Auto" Orientation="Horizontal" Margin="0,15" Width="213">
+                    <local:btAdminControl Width="40" Height="40" Margin="0,0,10,0" PreviewMouseDown="btAdminControl_PreviewMouseDown"/>
+                    <!--local:btConnectControl Width="40" Height="40" Margin="0,0,10,0" PreviewMouseDown="btConnect_PreviewMouseDown"/-->
+                    <!--<local:btSmartControl Width="40" Height="40" Margin="0,0,10,0" PreviewMouseDown="btSmartControl_PreviewMouseDown" />-->
+                    <!--<local:btKeyboardControl Width="40" Height="40" Margin="0,0,50,0" PreviewMouseLeftButtonDown="btKeyboardControl_PreviewMouseLeftButtonDown" />-->
+                    <local:btSaveControl Width="40" Height="40" Margin="0,0,10,0" PreviewMouseDown="btSave_PreviewMouseDown"/>
+                    <local:btLoadControl Width="40" Height="40" Margin="0,0,10,0" PreviewMouseDown="btLoadControl_PreviewMouseDown"/>
+                    <local:btExportControl Width="40" Height="40" Margin="0,0,10,0" PreviewMouseDown="btExportControl_PreviewMouseDown" />
+
+
+
+                </StackPanel>
+
+                <Canvas Grid.Row="2" Height="30" >
+                    <Rectangle Height="30"   Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}" Fill="#FF2D2D30" StrokeThickness="0.0" Stroke="#FF4E4E50"/>
+                    <ComboBox x:Name="cbMapList" Margin="20,4,0,0" Width="200"  HorizontalAlignment="Left" VerticalAlignment="Center" IsSynchronizedWithCurrentItem="False" DisplayMemberPath="MapName" IsReadOnly="False" />
+                    <Slider x:Name="Slider" Height="26" Canvas.Left="1270" Canvas.Top="4" Width="193" Style="{DynamicResource SliderStyle1}" ValueChanged="changedValue"  />
+
+
+                    <!--
+					<StackPanel Margin="250,0,0,0" Grid.Row="2" VerticalAlignment="Center" Orientation="Horizontal" Height="14" Canvas.Top="8">
+                    	<RadioButton x:Name="ViewNon" HorizontalAlignment="Left" VerticalAlignment="Center" Width="80" Content="표시없음" Foreground="White" Background="Silver" ClickMode="Release" IsChecked="True" />
+						<RadioButton x:Name="ViewAddr" HorizontalAlignment="Left" VerticalAlignment="Center" Width="60" Content="번호" Foreground="White" Background="Silver"/>
+						<RadioButton x:Name="ViewName" HorizontalAlignment="Left" VerticalAlignment="Center" Width="70" Content="이름" Foreground="White" Background="Silver"/>
+                    </StackPanel>
+					-->
+                </Canvas>
+
+                <StackPanel Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="Auto" Height="Auto" Orientation="Horizontal">
+                    <CheckBox x:Name="SelectButton" Content="버튼 선택" Margin="0,0,50,0" Foreground="White" Background="Silver" BorderBrush="Transparent" Visibility="Collapsed" Checked="SelectButton_Checked" Unchecked="SelectButton_Unchecked"/>
+                    <CheckBox x:Name="ButtonMoveLock" Content="버튼 이동 고정" Margin="0,0,50,0" Foreground="White" Background="Silver" BorderBrush="Transparent" Click="ButtonMoveLock_Click" Checked="ButtonMoveLock_Checked" Unchecked="ButtonMoveLock_Unchecked"/>
+                    <CheckBox x:Name="MapMoveLock" Content="맵 이동 고정" Margin="0,0,50,0" Foreground="White" Background="Silver" BorderBrush="Transparent" Unchecked="MapMoveLock_Unchecked" Checked="MapMoveLock_Checked" />
+                    <CheckBox x:Name="MapScaleLock" Content="맵 크기 고정" Margin="0,0,50,0" Foreground="White" Background="Silver" BorderBrush="Transparent" Unchecked="MapScaleLock_Unchecked" Checked="MapScaleLock_Checked" />
+                    <CheckBox x:Name="AutoSearchPanicButton" Content="비상버튼 자동인식" Margin="0,0,50,0" Foreground="White" Background="Silver" BorderBrush="Transparent" Unchecked="AutoSearchPanicButton_Unchecked" Checked="AutoSearchPanicButton_Checked" Visibility="Collapsed" />
+                </StackPanel>
+
+                <Canvas Grid.Row="3">
+                    <local:AddMapCtl x:Name="AddMap" MouseLeave="AddMap_MouseLeave" Visibility="Hidden" />
+                </Canvas>
+
+            </Grid>
+
+            <Rectangle Grid.Row="1" Fill="#FF626266" Panel.ZIndex="-2" Opacity="1.0" Grid.ColumnSpan="2" Margin="0,0,0,31" Grid.RowSpan="2" />
+
+            <Canvas x:Name="ControlCanvas" Grid.Row="1" Panel.ZIndex="-1" Grid.ColumnSpan="2" >
+                <zb:ZoomBoxPanel x:Name="zoomBox" Height="Auto" ZoomMode="ActualSize" MinZoom="20" MaxZoom="1000" MouseMode="Pan" WheelMode="Zoom" Panel.ZIndex="-1"   MouseWheel="zoomBox_MouseWheel" CenterContent="False" Padding="0" PanX="0" PanY="0">
+                    <Canvas x:Name="can" Height="Auto" Width="Auto" >
+                        <Image Name="MapImage"/>
+                    </Canvas>
+                    <Canvas x:Name="IconCanvas"/>
+                </zb:ZoomBoxPanel>
+
+
+            </Canvas>
+
+            <local:ZoomBoxSlider x:Name="zoomBoxSilder" Margin="0,10,10,0" Grid.Row="1"
+                  HorizontalAlignment="Right" VerticalAlignment="Top"
+                  ZoomBox="{Binding ElementName=zoomBox}" Height="163" Width="40" BorderThickness="1" Background="#FFD0D0D0" BorderBrush="#FF909090" SnapsToDevicePixels="True" MinWidth="40" MinHeight="120" IsEnabled="True" IsHitTestVisible="True" Visibility="Visible" ClipToBounds="False" AllowDrop="False" Grid.Column="1" />
+
+            <Rectangle x:Name="twowins" VerticalAlignment="Bottom" Height="31"  Grid.Row="2" Fill="#FF2D2D30"  Grid.ColumnSpan="2" />
+            <StackPanel Grid.Row="2" Margin="10,16.573,4,6" Orientation="Horizontal" Grid.ColumnSpan="2">
+                <TextBlock  HorizontalAlignment="Left" Margin="0,2,0,0"   Text="연결 상태 -  " TextWrapping="Wrap" Foreground="White"/>
+                <TextBlock x:Name="ConnectState" Margin="0,2,0,0" Text="" Foreground="White" />
+                <Button x:Name="btSerialView" Content="보기" Margin="0,0,0,0" IsEnabled="True"  Click="btSerialView_Click" Foreground="White" Background="#FF2D2D30" BorderBrush="{x:Null}" />
+
+            </StackPanel>
+
+            <!--     <ListBox x:Name="LogList" Background="Gray" Grid.Row="3" Height="120" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="Single" />   -->
+            <local:Copyright Grid.Row="4"  x:Name="copyright"  Foreground="Blue" Height="27" VerticalAlignment="Bottom" Grid.ColumnSpan="2" />
+
+
+        </Grid>
+    </Canvas>
+
+</Window>

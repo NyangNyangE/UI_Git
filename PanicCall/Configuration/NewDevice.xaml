@@ -1,0 +1,121 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:PanicCall="clr-namespace:PanicCall" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="PanicCall.Configuration.NewDevice"
+    Title="NewDevice" Width="1280" Height="715" ShowInTaskbar="False" Background="{x:Null}" WindowStyle="None" ResizeMode="NoResize" Topmost="True" AllowsTransparency="True" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Window.Resources>
+        <Storyboard x:Key="LoadedStoryboard">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01.0000000" Value="1" KeySpline="0,1,1,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource LoadedStoryboard}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid x:Name="LayoutRoot" Width="1280" HorizontalAlignment="Left">
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="1280"/>
+    		<ColumnDefinition Width="0"/>
+    		<ColumnDefinition Width="0"/>
+    		<ColumnDefinition/>
+    	</Grid.ColumnDefinitions>
+
+        <Rectangle Stroke="Gray" StrokeThickness="3" Fill="#FFEBEBEB" Width="1280" Grid.ColumnSpan="4" />
+
+        <Image Height="27" Width="27" Source="/PanicCall;Component/Images/onebit_21.png" Stretch="Fill" Margin="20,17.998,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" RenderTransformOrigin="0.438,0.562"/>
+        <TextBlock Text="전원장치" Margin="50,12.998,0,0"  VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Foreground="#FF012F85" Height="39.002" d:LayoutOverrides="GridBox" HorizontalAlignment="Left" Width="118.873" />
+	
+		<Rectangle Margin="20,96,20,19" Stroke="#FFB1B1B1" RadiusX="7" RadiusY="7" Fill="#FFFAFAFA" d:LayoutOverrides="GridBox"/>
+	
+		<Rectangle x:Name="rectangle" Margin="23,56,20,0" RadiusX="7" RadiusY="7" RenderTransformOrigin="0.5,0.5" Height="30" VerticalAlignment="Top">
+			<Rectangle.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Rectangle.RenderTransform>
+			<Rectangle.Fill>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="White" Offset="1"/>
+					<GradientStop Color="#FFDEDEDD"/>
+				</LinearGradientBrush>
+			</Rectangle.Fill>
+		</Rectangle>
+	
+		<Button x:Name="Ok" Margin="0,0,20,670" VerticalAlignment="Bottom" Height="29" Content="설정 완료" Click="Ok_Click" HorizontalAlignment="Right" Width="218"/>
+    	<CheckBox x:Name="IsSendSms" Margin="41,63,0,0" Content="전원장치 이상을 SMS로 발송 합니다" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="234" />
+        <ListView HorizontalAlignment="Left" Margin="39,134,0,146" x:Name="DeviceListView" Width="170" BorderBrush="#FFD2D2D2" Foreground="#FF363636" SelectionChanged="DeviceListView_SelectionChanged" SelectionMode="Single" AllowDrop="True">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding DeviceNum}" Header="번호" />
+                    <GridViewColumn DisplayMemberBinding="{Binding DeviceName}" Header="장치명" Width="100" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Power}" Header="상태" Width="30" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <PanicCall:NumberTextBox Height="25" HorizontalAlignment="Left" Margin="87,0,0,104" x:Name="tbDeviceNum" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="122" />
+        <TextBox Height="25" HorizontalAlignment="Left" Margin="87,0,0,70" Name="tbDeviceName" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="122" />
+        <TextBlock Height="20" HorizontalAlignment="Left" Margin="53.024,0,0,104" RenderTransformOrigin="0.667,0.52" Text="번호" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="24" />
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="41,0,0,70" RenderTransformOrigin="0.667,0.52" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="46" ><Run Language="ko-kr" Text="장치명"/></TextBlock>
+        <Button Content="추가" Height="25" HorizontalAlignment="Left" Margin="87,0,0,34" Name="AddDevice" VerticalAlignment="Bottom" Width="36" Click="AddDevice_Click"/>
+        <Button Content="수정" Height="25" HorizontalAlignment="Left" Margin="131,0,0,34" Name="ModifyDevice" VerticalAlignment="Bottom" Width="36" Click="ModifyDevice_Click" />
+        <Button Content="삭제" Height="25" HorizontalAlignment="Left" Margin="173,0,0,34" Name="DeleteDevice" VerticalAlignment="Bottom" Width="36" Click="DeleteDevice_Click" />
+        <GroupBox Header=" 랙 목록 " Height="455" HorizontalAlignment="Left" Margin="231,112,0,0" x:Name="groupBox1" VerticalAlignment="Top" Width="1010">
+        	<Grid />
+        </GroupBox>
+        <ListBox x:Name="ListRack" Margin="241,132,52,160" BorderBrush="#FFFAFAFA" Background="#FFFAFAFA" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+        <GroupBox Header=" 랙 추가/제거 " Height="109.287" HorizontalAlignment="Left" Margin="231,574.713,0,0" x:Name="RACK" VerticalAlignment="Top" Width="121">
+            <Grid>
+                <Button Content="랙추가" Height="30" Margin="11,0,10,42" Name="AddRack" VerticalAlignment="Bottom" d:LayoutOverrides="HorizontalAlignment" Click="AddRack_Click" />
+                <Button Content="랙제거" Height="28" HorizontalAlignment="Left" Margin="11,0,0,7" Name="DeleteRack" VerticalAlignment="Bottom" Width="88" d:LayoutOverrides="VerticalAlignment" Click="DeleteRack_Click" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header=" 장치 설정 " Height="109.287" Margin="586,574.713,410,0" x:Name="SetDevice" VerticalAlignment="Top">
+        	<Grid>
+                <Label Content="장치 이름" Height="25" Margin="8,0,199,47" VerticalAlignment="Bottom" />
+                <TextBox Height="25" IsReadOnly="True" Margin="77,0,0,47" Name="tbRackDeviceName" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="122" HorizontalAlignment="Left" />
+                <TextBox Height="25" HorizontalAlignment="Left" Margin="77,0,0,16" Name="tbRackDeviceNum" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="122" d:LayoutOverrides="VerticalAlignment" />
+                <Label Content="장치 번호" Height="25" HorizontalAlignment="Left" Margin="8,0,0,16" VerticalAlignment="Bottom" Width="65" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment" />
+                <Button Content="설정" Height="56.04" HorizontalAlignment="Right" Margin="0,0,12,16" x:Name="btModify" VerticalAlignment="Bottom" Width="42" Click="btModify_Click" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header=" 장치 추가/제거 " Height="109.287" Margin="368,574.713,0,0" x:Name="SetDevice_Copy" VerticalAlignment="Top" HorizontalAlignment="Left" Width="198">
+        	<Grid>
+                <Button x:Name="RackTypeMonitor" Content="모니터" Height="24.545" HorizontalAlignment="Right" Margin="0,0,126.261,12" VerticalAlignment="Bottom" Width="51.739" d:LayoutOverrides="VerticalAlignment" Click="RackTypeMonitor_Click" />
+                <Button x:Name="RackTypeDVR" Content="DVR" Height="24.545" HorizontalAlignment="Right" Margin="0,0,65.899,12" VerticalAlignment="Bottom" Width="51.739" d:LayoutOverrides="VerticalAlignment" Click="RackTypeDVR_Click" />
+                <Button x:Name="RackType4U" Content="4U" Height="24.545" HorizontalAlignment="Right" Margin="0,0,8,45" VerticalAlignment="Bottom" Width="51.739" Click="RackType4U_Click" />
+                <Button x:Name="RackType2U" Content="2U" Height="24.545" Margin="68.362,0,65.899,45" VerticalAlignment="Bottom" Click="RackType2U_Click" />
+                <Button x:Name="RackType1U" Content="1U" Height="24.545" Margin="8,0,0,45" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="51.739" Click="RackType1U_Click" />
+                <Button x:Name="RackTypeDel" Content="제거" Height="24.545" HorizontalAlignment="Right" Margin="0,0,8,12" VerticalAlignment="Bottom" Width="51.739" d:LayoutOverrides="VerticalAlignment" Click="RackTypeDel_Click" >
+                	<Button.Background>
+                		<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                			<GradientStop Color="#FFFFA6A6"/>
+                			<GradientStop Color="#FFFFAAAA" Offset="1"/>
+                		</LinearGradientBrush>
+                	</Button.Background>
+                </Button>
+            </Grid>
+        </GroupBox>
+        <TextBlock Height="18" HorizontalAlignment="Left" Margin="41,113,0,0" Name="textBlock1" Text="장치 목록" VerticalAlignment="Top" />
+        <GroupBox Header=" 장치 설정 가이드" Height="109.287" Margin="889,574.713,39,0" Name="groupBox2" VerticalAlignment="Top">
+            <Grid Width="333">
+                <TextBlock Height="23" HorizontalAlignment="Left" Margin="14,10,0,0" Name="textBlock2" Text="① 좌측에 장치목록에 장치를 입력하여 추가 하세요" VerticalAlignment="Top" Width="305" />
+                <TextBlock Height="23" HorizontalAlignment="Left" Margin="14,31,0,0" Name="textBlock3" Text="② 랙추가 후 장치 추가/제거 에서 장치를 추가하세요" VerticalAlignment="Top" Width="313" />
+                <TextBlock Height="23" HorizontalAlignment="Left" Margin="14,53,0,0" Name="textBlock4" Text="③ 장치는 우클릭/장치 설정 등으로 설정할 수 있습니다." VerticalAlignment="Top" Width="313" />
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="PanicCall.AddElevator"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Height="300" Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}" Loaded="UserControl_Loaded">
+    <Grid Height="300" Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}">
+        <Rectangle Height="50" Width="550" VerticalAlignment="Top" HorizontalAlignment="Left" Name="rectangle2" Stroke="Black" RadiusX="10" RadiusY="10" Margin="15, 10, 0, 0" Fill="#FF232323" />
+        <Rectangle Height="230" Width="AUTO" VerticalAlignment="Bottom" Name="rectangle1" Stroke="White" RadiusX="15" RadiusY="15" Margin="5, 15, 5,15" Fill="#FF232323" >
+            <Rectangle.Effect>
+                <DropShadowEffect ShadowDepth="1" Direction="-50" />
+            </Rectangle.Effect>
+
+        </Rectangle>
+        <Label Content="등록된 승강기" Height="28" HorizontalAlignment="Left" Margin="43,20,0,0" Name="label1" VerticalAlignment="Top" Foreground="White" />
+        <Label Content="{Binding}" Foreground="Cyan" Height="28" HorizontalAlignment="Left" Margin="131,20,0,0" Name="ElevatorCount" VerticalAlignment="Top" />
+        <Button Content="승강기 추가" Height="27" HorizontalAlignment="Left" Margin="188,19,0,0" Name="AddElevatorButton" VerticalAlignment="Top" Width="171" Click="AddElevatorButton_Click" />
+        <CheckBox Content="승강기 리스트 보이기" Height="16" HorizontalAlignment="Left" Margin="405,24,0,0" Name="CheckAlwaysVisible" VerticalAlignment="Top" Width="137" Foreground="White" Checked="CheckAlwaysVisible_Checked" Unchecked="CheckAlwaysVisible_Unchecked" />
+        <ListBox Height="200" Margin="6,70,6,0" Name="ElevatorListBox" VerticalAlignment="Top" Background="#FF232323" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Hidden" BorderBrush="#FF232323" SelectionMode="Single" MouseRightButtonDown="ElevatorListBox_MouseRightButtonDown">
+            <ListBox.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                <!--<SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>-->
+                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent"/>
+            </ListBox.Resources>
+            
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+        <Label Content="대" Foreground="Cyan" Height="28" HorizontalAlignment="Left" Margin="153,19,0,0" Name="label2" VerticalAlignment="Top" />
+    </Grid>
+</UserControl>

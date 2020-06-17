@@ -1,0 +1,51 @@
+﻿<Window x:Class="PanicCall.InputSensorInfo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:PanicCall"
+	mc:Ignorable="d"
+	x:Name="Window"
+	Title="InputSensorInfo" ShowInTaskbar="False" Background="{x:Null}" Width="310" Height="120" WindowStyle="None" ResizeMode="NoResize" Topmost="True" AllowsTransparency="True">
+
+    <Grid x:Name="LayoutRoot" Height="Auto" Width="Auto">
+        <Rectangle Height="100" Width="300" Fill="#FFFAFAFA"  RadiusX="20" RadiusY="20" Margin="5,15.987,5,4.013" Stroke="#FF444444" StrokeThickness="2"/>
+        <TextBlock Text="센서 정보를 입력 하세요"  Width="200" TextAlignment="Center" FontSize="13.333" FontWeight="Bold" Margin="50,23.505,50,0" VerticalAlignment="Top" Height="24.977" />
+		
+		<TextBlock Text="번호 / 이름" Margin="19,49.006,0,50.994" HorizontalAlignment="Left" />
+		<TextBlock Text="감시시간"  Width="50" Margin="19,0,0,16.994" HorizontalAlignment="Left" d:LayoutOverrides="Width" VerticalAlignment="Bottom" Height="20" />
+		<local:NumberTextBox  x:Name="StartHour" Margin="84.5,0,0,16.994" VerticalAlignment="Bottom" Height="20.993" HorizontalAlignment="Left" Width="32.5" RenderTransformOrigin="1,0.666" />
+		<TextBlock Text=":" Margin="207,0,97.5,15.994" VerticalAlignment="Bottom" Height="20" /> 
+		<local:NumberTextBox  x:Name="StartMinute" Margin="124.5,0,153,16.994" VerticalAlignment="Bottom" Height="20.993" RenderTransformOrigin="1,0.666" /> 
+		<TextBlock Text="~" Margin="159,0,141.5,16.994" VerticalAlignment="Bottom" Height="20" />
+		<local:NumberTextBox  x:Name="EndHour" Margin="0,0,105,16.994" VerticalAlignment="Bottom" Height="20.993" RenderTransformOrigin="1,0.666" HorizontalAlignment="Right" Width="32.5" /> 
+		<TextBlock Text=":" Margin="118,0,185.5,15.994" VerticalAlignment="Bottom" Height="20" /> 
+		<local:NumberTextBox  x:Name="EndMinute" Margin="0,0,65,16.994" VerticalAlignment="Bottom" Height="20.993" RenderTransformOrigin="1,0.666" HorizontalAlignment="Right" Width="32.5" />
+		<local:NumberTextBox   x:Name="address" Margin="84.5,49.006,0,50.994" HorizontalAlignment="Left" Width="32.5"  />
+		<TextBox  x:Name="name" Margin="125,48.482,65,51.518"  /> 
+		<Button x:Name="comfirm" Width="30" Content="확인" Margin="0,59.006,23,40.994" HorizontalAlignment="Right" Click="comfirm_Click" />
+		<Button x:Name="cancel" Height="20" Width="30" Content="취소" Margin="0,0,23,16.994" VerticalAlignment="Bottom" d:LayoutOverrides="Width" HorizontalAlignment="Right" Click="cancel_Click" />
+		<Path x:Name="left" Fill="#FFFAFAFA" Stretch="Fill" Stroke="#FF444444" HorizontalAlignment="Left" Margin="0.171,0.834,0,0" VerticalAlignment="Top" Width="33" Height="33.5" Data="M0,32 L-8.5,-0.5 23.5,23.5 z" StrokeThickness="2"/>
+		<Path x:Name="right" Fill="White" Stretch="Fill" Stroke="#FF444444" Margin="0,0.834,-0.171,0" VerticalAlignment="Top" Height="33.5" Data="M0,32 L-8.5,-0.5 23.5,23.5 z" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="33" Visibility="Hidden" StrokeThickness="2" >
+			<Path.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform ScaleX="-1" ScaleY="1"/>
+					<SkewTransform AngleX="0" AngleY="0"/>
+					<RotateTransform Angle="0"/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Path.RenderTransform>
+		</Path>
+		<Path Fill="#FFFAFAFA" Stretch="Fill" Stroke="#FFFAFAFA" StrokeThickness="2" HorizontalAlignment="Left" Margin="7.5,17.963,0,0" VerticalAlignment="Top" Width="39.138" Height="19.117" Data="M7.586,32.919425 C7.586,32.919425 7.661628,22.799552 18.503986,19.086517 22.111474,17.85111 28.179422,18.274451 34.337599,18.336864 59.004265,18.586864 32.000332,31.666334 32.000332,31.666334 L8.6670099,35.332598 z"/>
+		<Path Fill="#FFFAFAFA" Stretch="Fill" Stroke="#FFFAFAFA" StrokeThickness="2" HorizontalAlignment="Right" Margin="0,17.924,7.749,0" VerticalAlignment="Top" Width="38.804" Height="18.948" Data="M7.9185216,33.585743 C7.9185216,33.585743 7.8723021,30.439619 10.664364,26.341048 12.227953,24.045797 14.945192,20.66912 18.837376,19.336216 22.444864,18.100809 28.177624,18.399293 34.335801,18.461706 59.002467,18.711706 32.000332,31.666334 32.000332,31.666334 L8.6670099,35.332598 z" RenderTransformOrigin="0.5,0.5">
+			<Path.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform ScaleX="-1" ScaleY="1"/>
+					<SkewTransform AngleX="0" AngleY="0"/>
+					<RotateTransform Angle="0"/>
+					<TranslateTransform X="0.33400000000001739"/>
+				</TransformGroup>
+			</Path.RenderTransform>
+		</Path>
+	</Grid>
+</Window>

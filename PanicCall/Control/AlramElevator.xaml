@@ -1,0 +1,30 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="PanicCall.AlramElevator"
+	x:Name="UserControl" Loaded="UserControl_Loaded">
+
+    <Grid x:Name="LayoutRoot" HorizontalAlignment="Center" Width="{DynamicResource {x:Static SystemParameters.PrimaryScreenWidthKey}}" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" MouseEnter="LayoutRoot_MouseEnter" MouseLeave="LayoutRoot_MouseLeave" >
+        <Canvas x:Name="Original" Width="291" Height="509">
+            <Image Height="AUTO" Width="291" Margin="5,-1,-5,1"  Source="/PanicCall;component/Images/EVPanicAlarmIcon.png" Stretch="Fill" />
+            <TextBlock x:Name="PanicMsg" Text="" FontSize="38" TextAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0" FontWeight="Bold" Foreground="Red" AllowDrop="False" ClipToBounds="False" Focusable="False" Width="236" MinWidth="0" MaxWidth="Infinity" Canvas.Left="32" Canvas.Top="264" />
+        </Canvas>
+
+        <Canvas x:Name="Motion" Width="291" Height="509">
+            <Image Height="AUTO" Width="291" Margin="5,-1,-5,1"  Source="/PanicCall;component/Images/EVPanicAlarmIcon.png" Stretch="Fill" />
+            <TextBlock x:Name="MotionMsg" Text="" FontSize="38" TextAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0" FontWeight="Bold" Foreground="Red" AllowDrop="False" ClipToBounds="False" Focusable="False" Width="235" MinWidth="0" MaxWidth="Infinity" Canvas.Left="32" Canvas.Top="264" />
+        </Canvas>
+    </Grid>
+
+    <UserControl.Resources>
+        <Storyboard x:Key="ViewMsgStoryboard" AutoReverse="True" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Motion" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+</UserControl>

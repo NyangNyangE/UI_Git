@@ -1,0 +1,72 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:PanicCall="clr-namespace:PanicCall"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="PanicCall.Configuration.SMS"
+    Title="SMS" Width="440" Height="380" ShowInTaskbar="False" Background="{x:Null}" WindowStyle="None" ResizeMode="NoResize" Topmost="True" AllowsTransparency="True" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Window.Resources>
+    	<Storyboard x:Key="LoadedStoryboard">
+    		<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="{x:Null}" Storyboard.TargetProperty="(UIElement.Opacity)">
+    			<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+    			<SplineDoubleKeyFrame KeyTime="00:00:01.0000000" Value="1" KeySpline="0,1,1,1"/>
+    		</DoubleAnimationUsingKeyFrames>
+    	</Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+    	<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+    		<BeginStoryboard Storyboard="{StaticResource LoadedStoryboard}"/>
+    	</EventTrigger>
+    </Window.Triggers>
+
+    <Grid x:Name="LayoutRoot" Height="380">
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="0.725*"/>
+    		<ColumnDefinition Width="0.275*"/>
+    	</Grid.ColumnDefinitions>
+
+        <Rectangle RadiusX="10" RadiusY="10" Stroke="Gray" StrokeThickness="3" Fill="#FFEBEBEB" Grid.ColumnSpan="2" />
+
+        <Image Height="27" Width="27" Source="/PanicCall;Component/Images/onebit_41.png" Stretch="Fill" Margin="20,12.998,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" RenderTransformOrigin="0.438,0.562"/>
+        <TextBlock Text="SMS 설정" Margin="49,9.998,0,0"  VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Foreground="#FF012F85" HorizontalAlignment="Left" Height="33.002" Width="108.237" />
+	
+		<Rectangle Margin="20,50,20,72" Stroke="#FFA5B0FF" RadiusX="7" RadiusY="7" StrokeThickness="3" Fill="#FFFAFAFA" Grid.ColumnSpan="2"/>
+		<Rectangle x:Name="rectangle" Height="30" Margin="30,62,30,0" RadiusX="7" RadiusY="7" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+			<Rectangle.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Rectangle.RenderTransform>
+			<Rectangle.Fill>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="#FFA5B0FF" Offset="1"/>
+					<GradientStop Color="#FFDEDEDD"/>
+				</LinearGradientBrush>
+			</Rectangle.Fill>
+		</Rectangle>
+	
+		<Button x:Name="Ok" Margin="40,0,137,27" VerticalAlignment="Bottom" Height="29" Content="확인" Click="Ok_Click" TabIndex="8"/>
+		<Button x:Name="Cancel" Margin="-77,0,40,27" VerticalAlignment="Bottom" Height="29" Content="취소" Click="Cancel_Click" Grid.Column="1" TabIndex="9"/>
+		
+		<TextBlock HorizontalAlignment="Left" Margin="38,100,0,92" Width="90" TextWrapping="Wrap" FontSize="10.667"><Run Text="현장명"/><LineBreak/><Run/><LineBreak/><Run Text="현장주소"/><LineBreak/><Run Text=""/><LineBreak/><Run Text="현장 연락처"/><LineBreak/><Run Text=""/><LineBreak/><Run Text="SMS 수신 번호"/><LineBreak/><Run Text=""/><LineBreak/><Run Text="SMS AS 번호"/><LineBreak/><Run/><LineBreak/><Run Language="ko-kr" Text="SMS 추가 발송"/><LineBreak/><LineBreak/><Run Language="ko-kr" Text="재발송 대기 시간"/><LineBreak/><Run/></TextBlock>
+		<TextBox x:Name="Account" Margin="88.743,68,118.257,0" VerticalAlignment="Top" Height="20" Text="" TextWrapping="Wrap" TabIndex="1"/>
+		<PasswordBox x:Name="Password" Margin="-46,68,40,0" VerticalAlignment="Top" Height="20" Grid.Column="1" RenderTransformOrigin="0.491,0.55" TabIndex="2"/>
+		<TextBox x:Name="SendName" Margin="133,100,40,0" VerticalAlignment="Top" Height="20" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2" TabIndex="3"/>
+		<TextBox x:Name="SendAddress" Margin="133,127,40,0" VerticalAlignment="Top" Height="20" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2" TabIndex="4"/>
+		<PanicCall:NumberTextBox x:Name="SendNumber" Margin="133,155,40,0" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2" TabIndex="5" Height="20" VerticalAlignment="Top"/>
+		<PanicCall:NumberTextBox x:Name="ReciveNumber" Margin="133,184,40,0" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2" TabIndex="6" Height="20" VerticalAlignment="Top"/>
+		<TextBlock HorizontalAlignment="Left" Margin="40,71,0,0" VerticalAlignment="Top" Height="21" Text="계정 (A)" TextWrapping="Wrap"/>
+		<TextBlock HorizontalAlignment="Right" Margin="0,71,50,0" VerticalAlignment="Top" Height="21" Text="비밀번호" TextWrapping="Wrap"/>
+		<PanicCall:NumberTextBox x:Name="ReciveAsNumber" Margin="133,211,40,0" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2" TabIndex="6" Height="20" VerticalAlignment="Top"/>
+		<PanicCall:NumberTextBox x:Name="ReciveAsNumber2" Margin="133,239,40,0" Text="" TextWrapping="Wrap" Grid.ColumnSpan="2" TabIndex="6" Height="20" VerticalAlignment="Top"/>
+		<TextBlock Margin="133,0,137,89" TextWrapping="Wrap" FontSize="10.667" Height="21" VerticalAlignment="Bottom"><Run Language="ko-kr" Text="비상버튼 :"/></TextBlock>
+		<PanicCall:NumberTextBox x:Name="BtnDelayTime" Margin="0,270,98.257,0" TextWrapping="Wrap" TabIndex="6" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="32"/>
+		<TextBlock Margin="0,0,77.514,89" TextWrapping="Wrap" FontSize="10.667" Height="21" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="16.743"><Run Language="ko-kr" Text="분"/></TextBlock>
+		<TextBlock Margin="0,0,15.743,89" TextWrapping="Wrap" FontSize="10.667" Height="21" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="49.743" d:LayoutOverrides="HorizontalAlignment"><Run Language="ko-kr" Text="전원관리 :"/></TextBlock>
+		<PanicCall:NumberTextBox x:Name="PowerDelayTime" Margin="-8.743,270,0,0" TextWrapping="Wrap" TabIndex="6" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="27" Grid.Column="1"/>
+		<TextBlock Margin="22.257,0,0,89" TextWrapping="Wrap" FontSize="10.667" Height="21" VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Left" Width="16.743"><Run Language="ko-kr" Text="분"/></TextBlock>
+		
+	</Grid>
+</Window>

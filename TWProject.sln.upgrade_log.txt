@@ -1,0 +1,17 @@
+------------------------------------------------------------------------------------------------------------------
+D:\WORKSPACE - Program\Panic Monitoring System\V1.1.4 Panic Monitoring System - Upgrade\PanicCall\PanicCall.csproj
+------------------------------------------------------------------------------------------------------------------
+<Reference Include="Microsoft.Expression.Interactions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">의 <Include>을(를) 'Microsoft.Expression.Interactions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL'에서 'Microsoft.Expression.Interactions'(으)로 업데이트 중
+<Reference Include="Microsoft.Expression.Prototyping.Interactivity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">의 <Include>을(를) 'Microsoft.Expression.Prototyping.Interactivity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL'에서 'Microsoft.Expression.Prototyping.Interactivity'(으)로 업데이트 중
+<ExpressionBlendVersion> 값을 '3.0.1938.0'에서 '4.0.20621.0'(으)로 업데이트 중
+<Import>를 '$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\3.0\WPF\Microsoft.Expression.Blend.WPF.targets'에서 '$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.0\Microsoft.Expression.Blend.WPF.targets'(으)로 업데이트 중
+파일 저장 중
+
+
+-----------------------------------------------------------------------------------------------------
+D:\WORKSPACE - Program\Panic Monitoring System\V1.1.4 Panic Monitoring System - Upgrade\TWProject.sln
+-----------------------------------------------------------------------------------------------------
+솔루션 형식 머리글을 'Microsoft Visual Studio Solution File, Format Version 11.00'(으)로 설정 중
+파일 저장 중
+
+

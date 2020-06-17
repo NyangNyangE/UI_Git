@@ -1,0 +1,17 @@
+﻿<Window x:Class="PanicCall.Control.ConnectionTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ConnectionTest" Height="261" Width="368" ShowInTaskbar="False" Background="{x:Null}" WindowStyle="None" ResizeMode="NoResize" Topmost="True" AllowsTransparency="True">
+    <Grid>
+        <Rectangle Fill="#FFEBEBEB" RadiusX="10" RadiusY="10" Stroke="Gray" StrokeThickness="3" />
+        <TextBlock FontSize="24" FontWeight="Bold" Foreground="#FF012F85" HorizontalAlignment="Left" Margin="12,8,0,0" Text="장치 연결 테스트" VerticalAlignment="Top" />
+        <Rectangle Fill="#FFFAFAFA" Margin="12,46,12,12" RadiusX="7" RadiusY="7" Stroke="#FFB1B1B1" />
+        <Label Content="ACU" Height="28" HorizontalAlignment="Left" Margin="25,77,0,0" VerticalAlignment="Top" />
+        <Label Content="번호 :" Height="28" HorizontalAlignment="Left" Margin="63,77,0,0" VerticalAlignment="Top" />
+        <TextBox Height="24" HorizontalAlignment="Left" Margin="108,80,0,0" Name="AcuNumber" VerticalAlignment="Top" Width="55" MaxLength="3" />
+        <Button Content="연결 테스트" Height="24" HorizontalAlignment="Left" Margin="199,80,0,0" Name="Test" VerticalAlignment="Top" Width="120" Click="Test_Click" />
+        <TextBlock HorizontalAlignment="Left" Margin="25,132,0,0" Name="textBlock1" Text="장치 연결 상태 : " VerticalAlignment="Top" FontSize="24" />
+        <TextBlock FontSize="24" HorizontalAlignment="Left" Margin="199,132,0,0" Name="ConnectionState" Text="대기" VerticalAlignment="Top" />
+        <Button Content="확인" Height="26" HorizontalAlignment="Center" Margin="0,189,0,0" Name="Cancel" VerticalAlignment="Top" Width="301" Click="Cancel_Click" />
+    </Grid>
+</Window>
