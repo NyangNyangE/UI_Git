@@ -32,7 +32,7 @@ namespace PanicCall
         Camera camera;
         HttpWebRequest request;
         Polyline previewLine = new Polyline();
-
+        /
         bool isDown = false;
         PointCollection points = new PointCollection();
         string connectprotocol = "";
