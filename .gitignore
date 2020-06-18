@@ -10,6 +10,7 @@
 *.scc
 *.svclog
 *.log
+*.ttf
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -26,7 +27,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 
-# Setup
+# My
 [Ss]etup/
 
 # Visual Studio 2015 cache/options directory

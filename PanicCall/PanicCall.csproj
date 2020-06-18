@@ -314,10 +314,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Block.xaml.cs">
-      <SubType>Code</SubType>
-      <DependentUpon>Block.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ButtonCtl\btExportControl.xaml.cs">
       <DependentUpon>btExportControl.xaml</DependentUpon>
     </Compile>
@@ -327,14 +323,8 @@
     <Compile Include="ButtonCtl\btLoadControl.xaml.cs">
       <DependentUpon>btLoadControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ButtonCtl\btResidentControl.xaml.cs">
-      <DependentUpon>btResidentControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ButtonCtl\btSaveControl.xaml.cs">
       <DependentUpon>btSaveControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ButtonCtl\btMinimizedControl.xaml.cs">
-      <DependentUpon>btMinimizedControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ButtonCtl\btStartControl.xaml.cs">
       <DependentUpon>btStartControl.xaml</DependentUpon>
@@ -390,7 +380,6 @@
     </Compile>
     <Compile Include="EnumerationType\EnumerationType.cs" />
     <Compile Include="Group.cs" />
-    <Compile Include="LoadingAnimation.xaml.cs" />
     <Compile Include="LprSetting.xaml.cs">
       <DependentUpon>LprSetting.xaml</DependentUpon>
     </Compile>
@@ -455,10 +444,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Block.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ButtonCtl\btExportControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -475,17 +460,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ButtonCtl\btResidentControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ButtonCtl\btSaveControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ButtonCtl\btMinimizedControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
@@ -580,10 +555,6 @@
     <Page Include="Control\PisControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LoadingAnimation.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="LprSetting.xaml">
       <SubType>Designer</SubType>
