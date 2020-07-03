@@ -61,11 +61,11 @@ namespace PanicCall
         public void LoadPanics()
         {
             panics.Clear();
-            foreach (Map map in MainWindow.maps)
-                foreach (PanicControl panic in map.PanicList)
-                    foreach (int addr in panicAddrs)
-                        if (addr == panic.Addr)
-                            panics.Add(panic);
+            foreach (int addr in panicAddrs)
+                foreach (Map map in MainWindow.maps)
+                    if (map.PanicList.TryGetValue(addr, out PanicControl panic))
+                        panics.Add(panic);
+            
         }
 
         /// <summary>

@@ -27,7 +27,7 @@ namespace PanicCall
         {
             foreach (Map map in maps)
             {
-                foreach (PanicControl panic in map.PanicList)
+                foreach (PanicControl panic in map.PanicList.Values)
                 {
                     foreach (Camera camera in panic.cameras)
                     {

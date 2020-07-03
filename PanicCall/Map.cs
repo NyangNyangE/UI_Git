@@ -23,7 +23,7 @@ namespace PanicCall
         int cars = 0;
         int areas = 0;
 
-        List<PanicControl> panicList = new List<PanicControl>();
+       Dictionary<int, PanicControl> panicList = new Dictionary<int, PanicControl>();
         List<PisControl> pisList = new List<PisControl>();
 
         public Map()
@@ -86,9 +86,9 @@ namespace PanicCall
             set { areas = value; }
         }
 
-        public List<PanicControl> PanicList
+        public Dictionary<int, PanicControl> PanicList
         {
-            get { return panicList; }
+            get { return panicList;  }
             set { panicList = value; }
         }
 

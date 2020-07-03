@@ -95,7 +95,7 @@ namespace PanicCall
             {
                 foreach (Map map in maps)
                 {
-                    foreach (PanicControl pc in map.PanicList)
+                    foreach (PanicControl pc in map.PanicList.Values)
                     {
                         if (panic.Addr == pc.Addr)
                             continue;
@@ -132,6 +132,7 @@ namespace PanicCall
 
             try
             {
+                int prevAddr = panic.Addr;
                 try
                 {
                     panic.Addr = Convert.ToInt32(address.Text);
@@ -156,6 +157,15 @@ namespace PanicCall
 
                 panic.SetViewText(Properties.Settings.Default.nViewButtonText);
                 panic.SetTooltip();
+
+
+                Dictionary<int, PanicControl> panics = maps[maps.SelectIndex].PanicList;
+
+                if (panics.ContainsValue(panic))
+                    panics.Remove(prevAddr);
+                if(panic.Addr != -1)
+                    panics.Add(panic.Addr, panic);
+
             }
             catch (Exception ex)
             {

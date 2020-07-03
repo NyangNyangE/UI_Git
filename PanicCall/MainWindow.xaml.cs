@@ -374,7 +374,7 @@ namespace PanicCall
 
                 foreach (Map map in maps)
                 {
-                    foreach (PanicControl panic in map.PanicList)
+                    foreach (PanicControl panic in map.PanicList.Values)
                     {
                         foreach (Camera camera in panic.cameras)
                         {
@@ -471,24 +471,22 @@ namespace PanicCall
 
                    
                     foreach (Map map in maps)
-                    {                     
-                        foreach (PanicControl panic in map.PanicList)
+                    {
+                        map.PanicList.TryGetValue(addr, out PanicControl panic);
+                        foreach(Camera camera in panic.cameras)
                         {
-                            foreach (Camera camera in panic.cameras)
+                            if (camera == null)
+                                continue;
+
+                            if (camera.IP.Equals(ip))
                             {
-                                if (camera == null)
-                                    continue;
+                                if (color.Equals("Red"))
+                                    camera.isfull = true;
+                                else
+                                    camera.isfull = false;
 
-                                if (camera.IP.Equals(ip))
-                                {
-                                    if (color.Equals("Red"))
-                                        camera.isfull = true;
-                                    else
-                                        camera.isfull = false;
-
-                                    camera.cars = cars;
-                                    camera.areas = areas;
-                                }
+                                camera.cars = cars;
+                                camera.areas = areas;
                             }
                         }
                     }
@@ -518,7 +516,7 @@ namespace PanicCall
                     {
                         int map_cars = 0, map_areas = 0;
 
-                        foreach (PanicControl panic in maps[i].PanicList)
+                        foreach (PanicControl panic in maps[i].PanicList.Values)
                         {
                             int redCount = 0;
                             foreach (Camera camera in panic.cameras)                                    
@@ -1381,7 +1379,7 @@ namespace PanicCall
                 {
                     maps.Add(map);
 
-                    foreach (PanicControl panic in map.PanicList)
+                    foreach (PanicControl panic in map.PanicList.Values)
                     {
                         panic.SetMove(!(Properties.Settings.Default.IsButtonMoveLock));
 
@@ -2035,7 +2033,7 @@ namespace PanicCall
             {
                 foreach (Map map in maps)
                 {
-                    foreach (PanicControl _pc in map.PanicList)
+                    foreach (PanicControl _pc in map.PanicList.Values)
                     {
                         if (pc.Addr == _pc.Addr)
                         {
@@ -2065,7 +2063,7 @@ namespace PanicCall
         {
             IconCanvas.Children.Clear();
 
-            foreach (PanicControl panic in maps[maps.SelectIndex].PanicList)
+            foreach (PanicControl panic in maps[maps.SelectIndex].PanicList.Values)
             {
                 IconCanvas.Children.Add(panic);
             }
@@ -2148,7 +2146,7 @@ namespace PanicCall
 
             foreach (Map map in maps)
             {
-                foreach (PanicControl panic in map.PanicList)
+                foreach (PanicControl panic in map.PanicList.Values)
                     panic.SetMove(true);
                 foreach (PisControl pis in map.PisList)
                     pis.SetMove(true);
@@ -2166,7 +2164,7 @@ namespace PanicCall
 
             foreach (Map map in maps)
             {
-                foreach (PanicControl panic in map.PanicList)
+                foreach (PanicControl panic in map.PanicList.Values)
                     panic.SetMove(false);
                 foreach (PisControl pis in map.PisList)
                     pis.SetMove(false);
@@ -2337,7 +2335,7 @@ namespace PanicCall
 
                     foreach (Map map in maps)
                     {
-                        foreach (PanicControl panic in map.PanicList)
+                        foreach (PanicControl panic in map.PanicList.Values)
                         {
                             panic.SetMove(false);
                             panic.UnSetContextMenu();
@@ -2349,7 +2347,7 @@ namespace PanicCall
                 {
                     foreach (Map map in maps)
                     {
-                        foreach (PanicControl panic in map.PanicList)
+                        foreach (PanicControl panic in map.PanicList.Values)
                         {
                             panic.SetContextMenu();
                         }
@@ -2762,7 +2760,7 @@ namespace PanicCall
             {
                 if (isOpenAddGroup) //그룹 선택이 되있는지 확인
                 {
-                    foreach (PanicControl panic in maps[maps.SelectIndex].PanicList)
+                    foreach (PanicControl panic in maps[maps.SelectIndex].PanicList.Values)
                     {
                         selectedGroup.AddPanic(panic);
                         panic.selectedPanic();
@@ -2773,7 +2771,7 @@ namespace PanicCall
             {
                 if (isOpenAddGroup)
                 {
-                    foreach (PanicControl panic in maps[maps.SelectIndex].PanicList)
+                    foreach (PanicControl panic in maps[maps.SelectIndex].PanicList.Values)
                     {
                         selectedGroup.RemovePanic(panic);
                         panic.unSelectedPanic();
@@ -2818,7 +2816,7 @@ namespace PanicCall
             scale = e.NewValue;
             foreach (Map map in maps)
             {
-                foreach (PanicControl panic in map.PanicList)
+                foreach (PanicControl panic in map.PanicList.Values)
                 {
                     panic.panicScaleTransform.ScaleX = e.NewValue;
                     panic.panicScaleTransform.ScaleY = e.NewValue;
@@ -2850,7 +2848,7 @@ namespace PanicCall
             isSelectChecked = false;
 
             foreach (Map map in MainWindow.maps)
-                foreach (PanicControl panic in map.PanicList)
+                foreach (PanicControl panic in map.PanicList.Values)
                     panic.unSelectedPanic();
 
             zoomBox.MouseMode = ZoomBoxLibrary.ZoomBoxPanel.eMouseMode.Pan;

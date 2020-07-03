@@ -476,7 +476,7 @@ namespace PanicCall
         public void RemoveIocn()
         {
             (Application.Current.Properties["IconCanvas"] as Canvas).Children.Remove(this);
-            MainWindow.maps[MainWindow.maps.SelectIndex].PanicList.Remove(this);
+            MainWindow.maps[MainWindow.maps.SelectIndex].PanicList.Remove(this.Addr);
             MainWindow.maps.NotInsertPanic.Add(this);
             if (Addr > 0)
                 (Application.Current.Properties["MainWindow"] as MainWindow).AnswerIcon();

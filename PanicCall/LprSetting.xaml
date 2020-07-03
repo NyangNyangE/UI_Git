@@ -7,6 +7,6 @@
         <iconPacks:PackIconBoxIcons Kind="RegularCameraOff" HorizontalAlignment="Center" VerticalAlignment="Center" Height="250" Width="250" Foreground="#7F000000"></iconPacks:PackIconBoxIcons>
         <iconPacks:PackIconBoxIcons Kind="RegularUndo"  Height="30" Width="30" Margin="50,550,0,0" ToolTip="실행취소" Foreground="#99000000"></iconPacks:PackIconBoxIcons>
         <Button Content="확인" Height="33" HorizontalAlignment="Center" Margin="0,0,0,9" Name="Exit" VerticalAlignment="Bottom" Width="85" Click="Exit_Click" FontSize="15" />
-        <Canvas x:Name="Cnv"  Height="540" Width="960" Panel.ZIndex="10" Loaded="Cnv_Loaded" MouseLeftButtonDown="LprImage_MouseLeftButtonDown" PreviewMouseMove="Cnv_MouseMove" Background="#19FFFFFF" Margin="0,1,0,49"/>
+        <Canvas x:Name="Cnv"  Height="540" Width="960" Panel.ZIndex="10"  MouseLeftButtonDown="LprImage_MouseLeftButtonDown" PreviewMouseMove="Cnv_MouseMove" Background="#19FFFFFF" Margin="0,1,0,49"/>
     </Grid>
 </Window>

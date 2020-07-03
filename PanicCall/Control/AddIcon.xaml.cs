@@ -25,6 +25,7 @@ namespace PanicCall
     {
         double beginX = 0;
         double beginY = 0;
+        int initAddr;
 
         bool isHidden = false;
         bool isMouseDown = false;
@@ -250,7 +251,7 @@ namespace PanicCall
 
 
                 IconCanvas.Children.Add(panic);
-                maps[maps.SelectIndex].PanicList.Add(panic);
+                //maps[maps.SelectIndex].PanicList.Add(panic.Addr, panic);
 
                 if (maps.IconLock == false)
                     panic.SetMove(true);

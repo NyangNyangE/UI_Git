@@ -60,11 +60,6 @@ namespace PanicCall
         }
 
 
-        private void Cnv_Loaded(object sender, RoutedEventArgs e)
-        {
-           
-
-        }
         private bool initWebClient()
         {
             try
@@ -124,7 +119,7 @@ namespace PanicCall
         //{
         //    try
         //    {
-                
+
         //        HttpWebRequest req = (HttpWebRequest)result.AsyncState;
         //        req.Method = "Get";
         //        req.ProtocolVersion = HttpVersion.Version10;
@@ -152,7 +147,7 @@ namespace PanicCall
         {
             try
             {
-               // webClient.DownloadDataTaskAsync(uri);
+                // webClient.DownloadDataTaskAsync(uri);
                 webClient.DownloadDataAsync(uri);
             }
             catch (Exception ee)
@@ -160,6 +155,8 @@ namespace PanicCall
                 Console.WriteLine(ee.Message);
             }
         }
+
+        //화성
         //void downloadImage()
         //{
 
@@ -171,7 +168,15 @@ namespace PanicCall
 
         //        image = System.Drawing.Image.FromStream(res.GetResponseStream());
         //        BitmapImage bitmap = ToImage(image);
-        //        Getimg(bitmap);
+
+        //        Cnv.Background = new ImageBrush(bitmap);
+
+        //        //안내선
+        //        isDown = true;
+        //        previewLine.Stroke = new SolidColorBrush(Color.FromArgb(50, 255, 0, 0));
+        //        previewLine.StrokeThickness = 4;
+        //        Cnv.Children.Add(previewLine);
+        //        //Getimg(bitmap);
         //        settingROI();
         //    }
         //    catch (Exception ex)
@@ -291,7 +296,7 @@ namespace PanicCall
         {
             if (e.Error != null)
             {
-                Dispatcher.BeginInvoke(new Action(delegate()
+                Dispatcher.BeginInvoke(new Action(delegate ()
                 {
                     MainWindow.trace2("이미지 다운로드 실패");
                 }));
@@ -345,6 +350,7 @@ namespace PanicCall
             }
         }
 
+        //화성
         //public BitmapImage ToImage(System.Drawing.Image img)
         //{
         //    using (var ms = new MemoryStream())
@@ -476,12 +482,25 @@ namespace PanicCall
                     return;
                 Cnv.Children.RemoveAt(Cnv.Children.Count - 1);
                 Cnv.Children.RemoveAt(Cnv.Children.Count - 1);
+                if (count == 1)
+                {
+                    camera.ROI_1_x = "0";
+                    camera.ROI_1_y = "0";
+                }
+                else if (count == 2)
+                {
+                    camera.ROI_2_x = "0";
+                    camera.ROI_2_y = "0";
+
+                }
+                else if (count == 3)
+                {
+                    camera.ROI_3_x = "0";
+                    camera.ROI_3_y = "0";
+                }
                 count--;
             }
         }
-
-     
-       
         
     }
 

@@ -303,7 +303,7 @@ namespace PanicCall
             double _top, _left, cx, cy, newTop, newLeft;
             ScaleTransform scale = new ScaleTransform(Scale, Scale);
 
-            foreach (PanicControl panic in maps[maps.SelectIndex].PanicList)
+            foreach (PanicControl panic in maps[maps.SelectIndex].PanicList.Values)
             {
                 _top = (double)panic.GetValue(Canvas.TopProperty);
                 _left = (double)panic.GetValue(Canvas.LeftProperty);
