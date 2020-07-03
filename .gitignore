@@ -29,6 +29,10 @@ bld/
 
 # My
 [Ss]etup/
+[Ee]xcludeFile
+*.zip
+*.weights
+
 
 # Visual Studio 2015 cache/options directory
 .vs/
